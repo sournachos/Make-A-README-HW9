@@ -1,11 +1,17 @@
 const fs = require('fs'); //Standard Node library to read and write files.
 const inquirer = require('inquirer'); //Node library to personalize inputs
-const licenses = require('./utils/generateMarkdown'); // Path to Javascript file with licensing information
+const markRead = require('./utils/generateMarkdown'); // Path to Javascript file with licensing information
 
 // Creating an array 
 // const questions = ['Enter README description:', ''];
+function init() { 
 inquirer
     .prompt([
+        {
+            type: 'input',
+            message: 'Enter Project Title:',
+            name: 'title',
+        },
         {
             type: 'input',
             message: 'Enter README Description:',
@@ -39,7 +45,7 @@ inquirer
         {
             type: 'list',
             message: 'Choose License(s) For Your Project:',
-            choices: ['MIT', 'Apache', 'GPLv2', 'GPLv3', 'BSD 2-clause', 'BSD 3-clause'],
+            choices: ['MIT', 'Apache','BSD 2-clause', 'BSD 3-clause'],
             name: 'lic',
         },
         {
@@ -49,19 +55,15 @@ inquirer
         },
     ])
     .then((response)=>{
-        const lic = `${response.lic}`
-        
-    })
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, response) {
-
+        function writeToFile(fileName, data) {
+            fs.writeFile(fileName, data, (err) =>
+            err ? console.error(err) : console.log('Success!')
+          );
+        }
+        writeToFile('README.md', markRead(response), (err)=>{
+            err ?console.error(err) : console.log('README successfully created')
+        })
+    }).catch((err)=>{err ?console.error(err) : console.log('README successfully created')})
 }
 
-// TODO: Create a function to initialize app
-function init() { 
-    
-}
-
-// Function call to initialize app
 init();
