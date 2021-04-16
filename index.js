@@ -60,7 +60,7 @@ inquirer
             err ? console.error(err) : console.log('Success!')
           );
         }
-        writeToFile('README.md', markRead(response), (err)=>{
+        writeToFile('README.md', markRead.generateMarkdown(response), (err)=>{
             err ?console.error(err) : console.log('README successfully created')
         })
     }).catch((err)=>{err ?console.error(err) : console.log('README successfully created')})

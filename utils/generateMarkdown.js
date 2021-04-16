@@ -1,32 +1,37 @@
 //Function that creates README markdown using user input
-function generateMarkdown(response) {
-  return `# ${response.title} ![Badge]('https://img.shields.io/badge/License-${response.lic}-green.svg')
-  ${response.desc}
+function generateMarkdown(res) {
+  return `#${res.title} ![Badge]('https://img.shields.io/badge/License-${res.lic}-green.svg')
+  ${res.desc}
   <br>
-  ## Table of Contents:
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Contribution Guidelines](#contributing)
-  * [Tests](#test)
-  * [License](#license)
-  * [Questions](#questions)
+
+ ## Table of Contents:
+ * [Installation](#installation)
+ * [Usage](#usage)
+ * [Contribution Guidelines](#contributing)
+ * [Tests](#test)
+ * [License](#license)
+ * [Questions](#questions)
 <br>
+
 ## Installation
-Open terminal and run:<br>``${response.inst}``
+Open terminal and run:<br>
+${res.inst}
 ## Usage
-${response.use}
+${res.use}
 <br>
+
 ### Contributing
-${response.cont}
+${res.cont}
 
 ## Test
-Open terminal and run: ${response.test}
-
+Open terminal and run:
+ ${res.test}
+ 
 ## License
-[Link](https://opensource.org/licenses/${response.lic})
+[Link](https://opensource.org/licenses/${res.lic})
 
 ## Questions
-[GitHub](https://github.com/${response.gituser})<br>
-Email: ${response.email}`;}
+[GitHub](https://github.com/${res.gituser})<br>
+Email: ${res.email}`}
 
-module.exports = generateMarkdown;
+module.exports = {generateMarkdown};
