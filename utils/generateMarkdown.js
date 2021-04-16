@@ -1,6 +1,6 @@
 //Function that creates README markdown using user input
 function generateMarkdown(res) {
-  return `#${res.title} ![Badge]('https://img.shields.io/badge/License-${res.lic}-green.svg')
+  return `# ${res.title} ![badge](https://img.shields.io/badge/License-${res.lic}-green.svg)
   ${res.desc}
   <br>
 
@@ -20,15 +20,14 @@ ${res.inst}
 ${res.use}
 <br>
 
-### Contributing
+## Contributing
 ${res.cont}
 
 ## Test
-Open terminal and run:
  ${res.test}
  
 ## License
-[Link](https://opensource.org/licenses/${res.lic})
+[${res.lic} License](https://opensource.org/licenses/${res.lic})
 
 ## Questions
 [GitHub](https://github.com/${res.gituser})<br>
